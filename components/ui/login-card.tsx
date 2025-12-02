@@ -144,12 +144,13 @@ export function LoginCard({
               Recordarme
             </span>
           </label>
-          <Link
+          {/* Enlace de recuperación de contraseña pendiente de implementar */}
+          {/* <Link
             href="/forgot-password"
             className="text-white/60 hover:text-white/80 transition-colors"
           >
             ¿Olvidaste tu contraseña?
-          </Link>
+          </Link> */}
         </motion.div>
 
         {/* Submit Button */}

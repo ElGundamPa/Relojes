@@ -15,13 +15,8 @@ export function Footer() {
     empresa: [
       { label: "Nosotros", href: "/about" },
       { label: "Contacto", href: "/contact" },
-      { label: "Garantía", href: "/warranty" },
     ],
-    legal: [
-      { label: "Términos", href: "/terms" },
-      { label: "Privacidad", href: "/privacy" },
-      { label: "Cookies", href: "/cookies" },
-    ],
+    legal: [] as Array<{ label: string; href: string }>,
   };
 
   const socialLinks = [
@@ -122,21 +117,23 @@ export function Footer() {
             </ul>
           </AnimatedItem>
 
-          <AnimatedItem index={2}>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </AnimatedItem>
+          {footerLinks.legal.length > 0 && (
+            <AnimatedItem index={2}>
+              <h4 className="font-semibold mb-4">Legal</h4>
+              <ul className="space-y-3">
+                {footerLinks.legal.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </AnimatedItem>
+          )}
         </div>
 
         {/* Social & Copyright */}
