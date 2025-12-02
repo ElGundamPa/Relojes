@@ -4,6 +4,10 @@ import { ordersService } from "@/lib/services/ordersService";
 import { sendOrderConfirmationEmail, sendNewOrderNotificationToAdmin } from "@/lib/email";
 import { logger } from "@/lib/logger";
 
+// Forzar renderizado dinámico ya que usamos searchParams
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;

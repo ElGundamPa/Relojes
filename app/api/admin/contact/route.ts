@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { contactService } from "@/lib/services/contactService";
 
+// Forzar renderizado dinámico ya que usamos searchParams
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);

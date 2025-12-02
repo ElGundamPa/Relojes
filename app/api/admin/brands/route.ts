@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { brandsService } from "@/lib/services/brandsService";
 import { BrandData } from "@/data/brands";
 
+// Forzar renderizado dinámico ya que usamos searchParams en DELETE
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const brands = brandsService.getAll();

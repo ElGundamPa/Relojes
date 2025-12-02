@@ -3,6 +3,9 @@ import { searchService } from "@/lib/services/searchService";
 import { products } from "@/data/products";
 import { logger } from "@/lib/logger";
 
+// Forzar renderizado dinámico ya que usamos searchParams
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const query = searchParams.get("q");
