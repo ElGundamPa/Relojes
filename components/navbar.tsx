@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingBag, Moon, Sun, Menu, X, LogIn, User } from "lucide-react";
-import { useTheme } from "next-themes";
+import { ShoppingBag, Menu, X, LogIn, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/lib/store";
@@ -14,7 +13,6 @@ import Image from "next/image";
 
 export function Navbar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { getTotalItems, openCart } = useCartStore();
@@ -70,23 +68,6 @@ export function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="hidden sm:flex"
-            >
-              {mounted ? (
-                theme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )
-              ) : (
-                <div className="h-5 w-5" />
-              )}
-            </Button>
-
             <div className="relative">
               <Button
                 variant="ghost"
@@ -211,26 +192,6 @@ export function Navbar() {
                   )}
                 </Link>
               )}
-              <Button
-                variant="ghost"
-                onClick={() => {
-                  setTheme(theme === "dark" ? "light" : "dark");
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full justify-start"
-              >
-                {mounted && theme === "dark" ? (
-                  <>
-                    <Sun className="mr-2 h-4 w-4" />
-                    Modo claro
-                  </>
-                ) : (
-                  <>
-                    <Moon className="mr-2 h-4 w-4" />
-                    Modo oscuro
-                  </>
-                )}
-              </Button>
             </div>
           </motion.div>
         )}
