@@ -4,6 +4,11 @@ const nextConfig = {
     domains: [],
     remotePatterns: [],
   },
+  // Configuración de ESLint - los warnings no bloquean el build
+  eslint: {
+    // No ignorar completamente, pero los warnings no bloquean
+    ignoreDuringBuilds: false,
+  },
   webpack: (config, { isServer }) => {
     // Resolver problemas con next-auth
     if (!isServer) {
