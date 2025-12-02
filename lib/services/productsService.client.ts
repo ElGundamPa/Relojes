@@ -1,15 +1,17 @@
 // Cliente para el servicio de productos (usa API routes)
 import { Product } from "@/data/products";
 
+const getAllProducts = async (): Promise<Product[]> => {
+  const response = await fetch("/api/admin/products");
+  const data = await response.json();
+  return data.products || [];
+};
+
 export const productsServiceClient = {
-  getAll: async (): Promise<Product[]> => {
-    const response = await fetch("/api/admin/products");
-    const data = await response.json();
-    return data.products || [];
-  },
+  getAll: getAllProducts,
 
   getById: async (id: string): Promise<Product | undefined> => {
-    const products = await this.getAll();
+    const products = await getAllProducts();
     return products.find((p: Product) => p.id === id);
   },
 

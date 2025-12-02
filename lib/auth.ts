@@ -54,6 +54,7 @@ export const authService = {
           id: "1",
           email: "admin@relojes.com",
           name: "Administrador",
+          role: "admin",
         };
       }
       return null;

@@ -136,7 +136,7 @@ export const searchService = {
     }
 
     // Aplicar filtros
-    let results = this.filterProducts(productsToSearch, filters, tokens);
+    let results = searchService.filterProducts(productsToSearch, filters, tokens);
     
     // Ordenar por relevancia (productos que coinciden con más tokens primero)
     if (tokens.length > 0) {

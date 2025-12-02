@@ -196,7 +196,7 @@ function BrandForm({
       <div className="space-y-2">
         <Label htmlFor="logo">Logo de la Marca</Label>
         <LogoUploader
-          currentLogo={brand.logo}
+          currentLogo={brand.logo || undefined}
           brandSlug={brand.slug || brand.name.toLowerCase().replace(/\s+/g, "-")}
           onLogoUploaded={(path) => onChange({ ...brand, logo: path, image: path })}
         />

@@ -146,7 +146,7 @@ export const productsService = {
     return true;
   },
 
-  toggleActive: (id: string): Product | null => {
+  toggleActive: function(id: string): Product | null {
     const products = readProducts();
     const product = products.find((p) => p.id === id);
     
@@ -155,7 +155,7 @@ export const productsService = {
     // Agregar campo active si no existe
     const updatedProduct = {
       ...product,
-      active: !(product as any).active ?? true,
+      active: (product as any).active === undefined ? true : !(product as any).active,
     };
 
     return this.update(id, updatedProduct);

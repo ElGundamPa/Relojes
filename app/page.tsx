@@ -48,11 +48,12 @@ export default async function Home() {
   const brands = await getAllBrands();
   
   // Seleccionar un producto de cada marca para la colección destacada
-  const featuredProducts = brands
-    .map((brand) => {
-      const brandProducts = getCachedProductsByBrand(brand.name);
-      return brandProducts.length > 0 ? brandProducts[0] : null;
-    })
+  const brandProductsPromises = brands.map(async (brand) => {
+    const brandProducts = await getCachedProductsByBrand(brand.name);
+    return brandProducts.length > 0 ? brandProducts[0] : null;
+  });
+  
+  const featuredProducts = (await Promise.all(brandProductsPromises))
     .filter((product): product is NonNullable<typeof product> => product !== null)
     .slice(0, 6); // Limitar a 6 productos máximo
 

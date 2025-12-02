@@ -1,15 +1,18 @@
 // Cliente para el servicio de marcas (usa API routes)
 import { BrandData } from "@/data/brands";
 
+const getAllBrands = async (): Promise<BrandData[]> => {
+  const response = await fetch("/api/admin/brands");
+  const data = await response.json();
+  return data.brands || [];
+};
+
 export const brandsServiceClient = {
-  getAll: async (): Promise<BrandData[]> => {
-    const response = await fetch("/api/admin/brands");
-    const data = await response.json();
-    return data.brands || [];
-  },
+  getAll: getAllBrands,
 
   getBySlug: async (slug: string): Promise<BrandData | undefined> => {
-    const brands = await this.getAll();
+    const brands = await getAllBrands();
+    if (!brands || brands.length === 0) return undefined;
     return brands.find((b: BrandData) => b.slug === slug);
   },
 

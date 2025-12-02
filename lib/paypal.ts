@@ -27,6 +27,11 @@ export interface PayPalOrder {
       surname?: string;
     };
   };
+  links?: Array<{
+    rel: string;
+    href: string;
+    method: string;
+  }>;
 }
 
 export async function getPayPalAccessToken(): Promise<string> {
