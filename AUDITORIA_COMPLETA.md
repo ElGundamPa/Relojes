@@ -167,3 +167,4 @@ npm run build
 **Estado**: ✅ Listo para producción (con warnings menores)
 
 
+
